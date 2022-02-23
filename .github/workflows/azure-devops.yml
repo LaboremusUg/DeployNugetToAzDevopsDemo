@@ -1,0 +1,12 @@
+name: Publish Nuget Package to Azure Devops.
+on:
+  workflow_dispatch:
+jobs:
+  RUN_PROCESS:
+    uses: LaboremusUg/Reusable_Work_Flows/.github/workflows/publish_nuget_packages_automatic.yml@main
+    with:
+      DOTNET_VERSION: "2.1.x"
+      BUILD_CONFIGURATION: "Release"
+    secrets:
+      AZURE_ARTIFACTS_FEED_URL: https://pkgs.dev.azure.com/laboremus-uganda/LUG/_packaging/LugNuGetFeed/nuget/v3/index.json
+      NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
